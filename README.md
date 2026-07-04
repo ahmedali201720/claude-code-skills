@@ -1,40 +1,123 @@
-# Claude Code Skills
+# Claude Code Skills — curated by Ahmed Ali
 
-A curated collection of custom **[Agent Skills](https://code.claude.com/docs/en/skills)** for [Claude Code](https://www.claude.com/product/claude-code) — reusable `SKILL.md` packages that teach Claude how to handle frontend, TypeScript, React, and day-to-day agency workflows the way *I* want them done.
+A curated collection of **[Agent Skills](https://code.claude.com/docs/en/skills)** for [Claude Code](https://www.claude.com/product/claude-code) — reusable `SKILL.md` packages that teach Claude how to handle frontend, Angular, React/Next.js, web-quality, and clean-code work the way *I* want it done.
 
-> Skills are folders of instructions, scripts, and resources that Claude loads **on demand**. Instead of re-explaining your conventions in every session, you package them once and Claude picks the right one automatically.
+> Skills are folders of instructions, scripts, and resources that Claude loads **on demand**. Claude reads each skill's `name` + `description` at startup and pulls in the full body only when a task matches — so you package your conventions once instead of re-explaining them every session.
+
+This repo bundles one skill I maintain myself (`clean-code-robert-c-martins`) alongside five upstream collections I rely on, vendored here so I get one consistent set across every project. Full credit to the original authors — see [Credits](#credits).
 
 ---
 
 ## What's inside
 
-Each skill lives in its own folder with a `SKILL.md` entry point. Claude reads the `name` + `description` at startup and loads the full body only when a task matches.
+**6 collections · 26 skills** (plus 2 contributor-only skills and one redirect notice).
+
+| Collection | Source | Skills | Focus |
+|---|---|---|---|
+| [`clean-code-robert-c-martins`](#clean-code-robert-c-martins-mine) | *mine* | 1 | Clean Code review/refactor for JS/TS/React |
+| [`addyosmani-web-quality-skills`](#addyosmani-web-quality-skills) | [addyosmani/web-quality-skills](https://github.com/addyosmani/web-quality-skills) | 6 | Performance, Core Web Vitals, a11y, SEO |
+| [`angular-skills`](#angular-skills) | [angular/skills](https://github.com/angular/skills) | 2 | Official Angular scaffolding & guidance |
+| [`angular-best-practices`](#angular-best-practices) | [alfredoperez/angular-best-practices](https://github.com/alfredoperez/angular-best-practices) | 8 | Modern Angular rules + per-library packs |
+| [`vercel-agent-official-skills`](#vercel-agent-official-skills) | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | 9 | React/Next.js perf, deploy, design & docs |
+| [`vercel-next-skills`](#vercel-next-skills) | [vercel-labs/next-skills](https://github.com/vercel-labs/next-skills) | — | Redirect: skills moved into the Next.js repo |
+
+---
+
+### `clean-code-robert-c-martins` *(mine)*
 
 | Skill | What it does | Trigger |
 |---|---|---|
-| `react-component` | Scaffolds a React component to my conventions (folder layout, props typing, tests). | `/react-component` or auto |
-| `clean-code-review` | Reviews a diff against Clean Code heuristics (naming, small functions, no magic numbers). | auto on review |
-| `figma-to-code` | Turns exported Figma assets / Inspect data into pixel-accurate React + Tailwind. | `/figma-to-code` |
-| `ts-strict` | Enforces strict TypeScript patterns — no `any`, `Result` types, discriminated unions. | auto |
-| `commit-msg` | Writes conventional-commit messages from the staged diff. | `/commit-msg` |
+| `clean-code-review` | Reviews, refactors, or writes JS/TS/React following Robert C. Martin's *Clean Code* — naming, small functions, no magic numbers, fewer code smells. Applies to `.js/.jsx/.ts/.tsx`. | auto on review/refactor · `/clean-code-review` |
 
-> Replace the rows above with your own skills as you add them.
+> Built on my [Clean Code — a developer's summary (JS/TS/React)](https://learn.onxcode.io/clean-code-summary/).
+
+### `addyosmani-web-quality-skills`
+
+Stack-agnostic web-quality skills distilled from Lighthouse audits, Core Web Vitals, and WCAG 2.2.
+
+| Skill | What it does |
+|---|---|
+| `web-quality-audit` | Comprehensive audit across performance, a11y, SEO, and best practices. |
+| `performance` | Faster loading and runtime efficiency; resource optimization. |
+| `core-web-vitals` | Targeted LCP, INP, and CLS fixes. |
+| `accessibility` | WCAG 2.2 audit — screen readers, keyboard nav, contrast. |
+| `seo` | Search visibility — meta tags, structured data, sitemaps. |
+| `best-practices` | Security, browser compatibility, and code-quality checks. |
+
+### `angular-skills`
+
+Official skills from the Angular team @ Google.
+
+| Skill | What it does |
+|---|---|
+| `angular-developer` | Generates idiomatic Angular code and architectural guidance — signals, forms, DI, routing, SSR, ARIA, animations, styling, testing, CLI. |
+| `angular-new-app` | Scaffolds a new Angular app with the Angular CLI following modern conventions. |
+
+### `angular-best-practices`
+
+Modern Angular 17+ rules with per-library add-on packs. Load the core skill plus any library packs you use.
+
+| Skill | What it does |
+|---|---|
+| `angular-best-practices` | Core rules: Signals, RxJS, components, templates, styles, performance, SSR, testing, forms, routing, a11y, architecture — with impact ratings. |
+| `angular-best-practices-material` | Angular Material + CDK — selective imports, M3 theming, test harnesses. |
+| `angular-best-practices-ngrx` | NgRx Store/Effects/Entity — pure reducers, action groups, selectors. |
+| `angular-best-practices-signalstore` | NgRx SignalStore — shared/computed state, entities, `rxMethod`. |
+| `angular-best-practices-primeng` | PrimeNG — tree-shaking imports, lazy tables, Aura/Lara theming. |
+| `angular-best-practices-spartan` | Spartan UI — Brain/Helm architecture, Tailwind, headless a11y. |
+| `angular-best-practices-tanstack` | TanStack Query — query/mutation patterns, cache invalidation, key factories. |
+| `angular-best-practices-transloco` | Transloco i18n — runtime translation, lazy per-route files, test mocking. |
+
+> Also ships two contributor-only skills — `angular-best-practices-rule-creator` and `angular-best-practices-rules-reviewer` — for authoring/auditing rule files, not app development.
+>
+> ⚠️ Upstream is archived; Angular now maintains the official [`angular-skills`](#angular-skills) above.
+
+### `vercel-agent-official-skills`
+
+Agent skills from Vercel Labs for React/Next.js work, deployment, and review.
+
+| Skill | What it does |
+|---|---|
+| `vercel-react-best-practices` | React/Next.js performance guidelines from Vercel Engineering (40+ rules). |
+| `vercel-composition-patterns` | Scalable React composition — compound components, render props, context, React 19 APIs. |
+| `vercel-react-native-skills` | React Native + Expo — list perf, animations, native modules. |
+| `vercel-react-view-transitions` | React View Transition API — page/route, shared-element, enter/exit animations. |
+| `vercel-optimize` | Audits a deployed Vercel project for cost, performance, caching, and function usage. |
+| `deploy-to-vercel` | Deploys apps/sites to Vercel ("deploy my app", "push this live"). |
+| `vercel-cli-with-tokens` | Token-based (non-interactive) Vercel CLI deploys and env management. |
+| `web-design-guidelines` | Reviews UI code against the Web Interface Guidelines. |
+| `writing-guidelines` | Reviews docs/prose against the Writing Guidelines handbook. |
+
+### `vercel-next-skills`
+
+The Next.js skills that lived here **moved into the Next.js repo** so they stay version-matched with the framework. This folder keeps only the redirect notice.
+
+```bash
+# install from the new home
+npx skills add vercel/next.js
+```
+
+See the folder's [README](vercel-next-skills/README.md) for where each old skill went.
 
 ---
 
 ## Repository structure
 
 ```
-claude-code-skills/
-├── react-component/
-│   ├── SKILL.md          # required — instructions + YAML frontmatter
-│   ├── references/       # optional — docs loaded on demand
-│   ├── scripts/          # optional — deterministic scripts Claude can run
-│   └── assets/           # optional — templates, boilerplate files
-├── clean-code-review/
-│   └── SKILL.md
-├── figma-to-code/
-│   └── SKILL.md
+claude-code-skills-by-ahmed-ali/
+├── clean-code-robert-c-martins/        # my own skill (single skill at root)
+│   ├── SKILL.md
+│   └── references/clean-code-summary.md
+├── addyosmani-web-quality-skills/      # vendored upstream collection
+│   └── skills/<skill>/SKILL.md
+├── angular-skills/
+│   └── <skill>/SKILL.md
+├── angular-best-practices/
+│   ├── skills/<skill>/SKILL.md
+│   └── .claude/skills/<contributor-skill>/SKILL.md
+├── vercel-agent-official-skills/
+│   └── skills/<skill>/SKILL.md
+├── vercel-next-skills/                 # redirect notice only
 └── README.md
 ```
 
@@ -42,18 +125,16 @@ Anatomy of a `SKILL.md`:
 
 ```markdown
 ---
-name: react-component
-description: Scaffold a React component following our conventions. Use when
-  the user asks to create a new component, page, or UI element in React.
+name: clean-code-review
+description: Review, refactor, or write JS/TS/React following Robert C. Martin's
+  "Clean Code" principles. Use when the user asks to review code, refactor,
+  improve readability, or reduce code smells.
 ---
 
-# React Component
+# Clean Code Review
 
 ## Instructions
-1. Create the folder `src/components/<Name>/`.
-2. Add `<Name>.tsx`, `<Name>.test.tsx`, and `index.ts`.
-3. Type props with an explicit interface; no `any`.
-4. ...
+1. ...
 ```
 
 The `description` is the most important line — it's how Claude decides **when** to reach for the skill, so make it specific about the task *and* the trigger.
@@ -62,27 +143,42 @@ The `description` is the most important line — it's how Claude decides **when*
 
 ## Installation
 
-### Option A — Personal skills (available in every project)
+Each collection follows the [Agent Skills](https://agentskills.io/) format. Two ways to install:
 
-Clone the repo and symlink (or copy) the skills you want into your personal skills folder:
+### Option A — install a collection from its source
+
+Most upstream collections publish via the `skills` CLI:
 
 ```bash
-git clone https://github.com/ahmedali201720/claude-code-skills.git
-cd claude-code-skills
-
-# symlink one skill (recommended — stays in sync with git pull)
-ln -s "$PWD/react-component" ~/.claude/skills/react-component
-
-# …or copy everything
-cp -r */ ~/.claude/skills/
+npx skills add addyosmani/web-quality-skills
+npx skills add angular/skills
+npx skills add alfredoperez/angular-best-practices
+npx skills add vercel-labs/agent-skills
 ```
 
-### Option B — Project skills (shared with your team via the repo)
+Supported by Claude Code, Cursor, Codex, VS Code Copilot, and 30+ agents.
 
-Drop a skill into a project's `.claude/skills/` folder and commit it. Everyone who clones the project gets it:
+### Option B — copy individual skills from this repo
+
+Pick specific skills and drop them into your skills folder.
+
+**Personal (every project):**
 
 ```bash
-cp -r react-component /path/to/project/.claude/skills/
+git clone https://github.com/ahmedali201720/claude-code-skills-by-ahmed-ali.git
+cd claude-code-skills-by-ahmed-ali
+
+# one skill I maintain
+cp -r clean-code-robert-c-martins ~/.claude/skills/clean-code-review
+
+# one skill from a bundled collection
+cp -r addyosmani-web-quality-skills/skills/performance ~/.claude/skills/performance
+```
+
+**Project (shared with your team via the repo):**
+
+```bash
+cp -r clean-code-robert-c-martins /path/to/project/.claude/skills/clean-code-review
 ```
 
 Project skills are discovered from `.claude/skills/` in your working directory up to the repo root (great for monorepos).
@@ -97,35 +193,33 @@ Once installed, Claude Code uses skills two ways:
 - **Explicitly** — invoke by name as a slash command:
 
   ```
-  /react-component UserCard
   /clean-code-review
+  /web-quality-audit
+  /angular-developer
   ```
 
 Verify a skill is picked up by asking Claude Code: *"what skills do you have available?"*
 
 ---
 
-## Creating a new skill
+## Credits
 
-1. Make a folder: `mkdir my-skill && cd my-skill`
-2. Add a `SKILL.md` with `name` + `description` frontmatter and clear, numbered instructions.
-3. Keep the body focused (aim for well under ~5k words); push long docs into `references/` and deterministic work into `scripts/`.
-4. Test it in a real session, then commit.
+This is a curated bundle. Full credit to the upstream authors:
 
-Tips that keep skills reliable:
+- **[web-quality-skills](https://github.com/addyosmani/web-quality-skills)** — Addy Osmani
+- **[angular/skills](https://github.com/angular/skills)** — Angular Team @ Google
+- **[angular-best-practices](https://github.com/alfredoperez/angular-best-practices)** — Alfredo Perez *(archived upstream)*
+- **[agent-skills](https://github.com/vercel-labs/agent-skills)** & **[next-skills](https://github.com/vercel-labs/next-skills)** — Vercel Labs
 
-- Write the `description` around **when to use it**, not just what it is.
-- One skill = one job. Split multi-purpose skills.
-- Don't use a skill as a linter — leave formatting to Prettier/ESLint and let the skill handle judgment work.
-- Bundle scripts for anything deterministic (codegen, validation) so Claude runs code instead of guessing.
+`clean-code-review` is my own, based on my [Clean Code — a developer's summary](https://learn.onxcode.io/clean-code-summary/).
 
 ---
 
 ## Related
 
-- 📚 [Clean Code — a developer's summary (JS/TS/React)](https://learn.onxcode.io/clean-code-summary/) — the reference these review skills lean on.
 - 📖 [Claude Code Skills docs](https://code.claude.com/docs/en/skills)
 - 🧩 [Anthropic's open-source skills](https://github.com/anthropics/skills)
+- 🌐 [agentskills.io](https://agentskills.io/) — the Agent Skills format
 
 ---
 
@@ -136,4 +230,4 @@ Tips that keep skills reliable:
 
 ## License
 
-MIT — use, adapt, and share freely. Attribution appreciated but not required.
+MIT for the material I authored. Bundled collections retain their own licenses (MIT unless their `SKILL.md` states otherwise) — see each collection's folder.
